@@ -1,0 +1,17 @@
+.inputContainer{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto; 
+    gap: 20px; /* Optional: Adds space between rows */
+}
+.inputs{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto; 
+    gap: 20px; /* Optional: Adds space between rows */
+    width: 500px;
+}
+
+button{
+    background-color: lightgray;
+}

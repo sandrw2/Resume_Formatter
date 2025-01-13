@@ -1,0 +1,38 @@
+Array Functions in JSX
+    (.maps) 
+    - Creates a new array by iterating over each item of the original array
+    - Since it returns a new array rather than modifying the original, it works great
+      for state hooks
+    - Format: 
+        explicit return: someArray.map((arrayItem)=>{ return transformedItem})
+        implicit return: someArray.map(()=> singleExpression)
+
+
+()=>{} vs ()=> (Explicit vs implicit return)
+    - {} aka block body 
+    - Explicit returns with curly braces require a the return word
+    - Implicit returns only work with single expressions
+
+onClick(()=>function()) vs onClick(()=>{function()})
+    - First example calls the function immediately on rerender
+    - Second will only called when the event happens
+
+Logical Operators
+    -(&&) condition && returnedElement 
+        - Returns the returnElement if condition is truthy 
+    -(Ternary) condition ? returnElement1 : returnElement2 
+        - Returns returnElement1 if condition is true and returnElement2 otherwise
+    - (||) username || returnElement
+        - Take whichever gives a true value 
+    - (??) username ?? returnElement 
+        - Take whichever is not null
+
+Imports
+    - Can import files with:
+        import name from [file location]
+    
+Attributes
+    - <label>: for = "id" attribute is used to link to to an id of an element
+
+
+    

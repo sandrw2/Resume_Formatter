@@ -1,0 +1,21 @@
+Logs: 
+    (Finished): Working on Displaying experience forms and preview:
+    (Finished) Adding Detail attribute into experience section 
+    (Finished) Update all HandleSectionChange() to have detId in param
+    (Finished) Working on Experience form 
+    (Finished) Bug Fix: edu id and Exp id are now just id for handleSectionChange Params
+    (Finished) Working on Expereience Preview
+    (Finished) Working on prettifying app.css input section
+    (progress) Finish labels for education
+    (mostly working) collapse function --> setOpen function is now called by Experienece and Personal
+        (fixed) When all collapsed container shrinks
+        (fixed) Add Section button not inside of collapsible container
+        (fixed) When adding section,section collapses
+    (Finished) Working on print button
+        (bug) printed section is shifted to the right
+    (In Progress) delete function
+        * Each Added Section should be able to be deleted. But there should be at least 1 left
+        * Each Detail of experience section should be able to be deleted
+    (In Progress) Clear Button 
+
+ 
