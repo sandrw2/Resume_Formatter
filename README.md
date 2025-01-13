@@ -1,5 +1,5 @@
-Logs: 
-    (Finished): Working on Displaying experience forms and preview:
+**Logs**: 
+    (Finished) Working on Displaying experience forms and preview:
     (Finished) Adding Detail attribute into experience section 
     (Finished) Update all HandleSectionChange() to have detId in param
     (Finished) Working on Experience form 
