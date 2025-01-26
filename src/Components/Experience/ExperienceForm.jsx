@@ -63,7 +63,6 @@ function ExperienceForm({experiences, handleChange, addDetail, sectionClick, isO
                     <button className = "form-button" onClick={() => {addDetail(exp.id)}}>Add Detail</button>
                 </div>
             ))}
-            
             {isOpen &&  (<button className = "form-button" onClick={()=> addExp("exp")}>Add Experience</button>)}
         </div>
     )

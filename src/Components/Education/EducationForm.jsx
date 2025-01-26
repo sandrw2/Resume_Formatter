@@ -1,5 +1,6 @@
 import '../../Styles/app.css'
 import EducationIcon from '../../assets/EducationIcon.jpg'
+import DeleteIcon from '../../assets/RedXIcon.png'
 function EducationForm({educations, handleChange, sectionClick, isOpen, addEdu, deleteEdu}){
     return (
         <div className='section-background' onClick={()=>sectionClick("education")}>
@@ -12,7 +13,12 @@ function EducationForm({educations, handleChange, sectionClick, isOpen, addEdu, 
             
             {isOpen && educations.map((edu)=>(
                 <div key={edu.id} className = "input-section">
-                    <button onClick={(e)=>{e.stopPropagation(); deleteEdu("edu", edu.id)}}> - </button>
+                    <img
+                        src = {DeleteIcon}
+                        className = "delete-button" 
+                        onClick={(e)=>{e.stopPropagation(); deleteEdu("edu", edu.id)}}   
+                        alt="Delete"
+                    />
                     <input 
                         name = "school" 
                         placeholder="School Name" 
@@ -50,7 +56,7 @@ function EducationForm({educations, handleChange, sectionClick, isOpen, addEdu, 
                     />
                 </div>
             ))}
-            
+
             {isOpen && (
                 <button 
                     className = "form-button" 

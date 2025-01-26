@@ -18,8 +18,15 @@ function App(){
     //---Educations: [{id, School, Start, End ...}, {...}]
     //---Experiences: [{id, Company, Start, End, ...} , {...}]
 
+    //OpenSections:
+    // education/experience: {[boolean], [subsection_id]]}
+    // because the state value for subsection id is initially set to be the fist subsection
+    // if all sections are deleted the state value must be set to null
+
+    
+
     const [openSections, setOpenSections] = useState(
-        {"general":true, "education":true, "experience": true});
+        {"general":true, "education":{sectionOpen: true, subsectionId: null}, "experience": {sectionOpen: true, subsectionId: null}});
     const [sections, setSections] = useState(exampleData);
 
     function handleSectionChange(e, section, id = null, detId = null){
@@ -83,17 +90,17 @@ function App(){
     function collapseToggle(section){
         if(section === "general"){
             console.log("general is toggled");
-            const currentGeneral = openSections["general"];
-            setOpenSections({...openSections, general: !currentGeneral});
+            const generalSectionOpen = openSections.general;
+            setOpenSections({...openSections, general: !generalSectionOpen});
 
         }else if(section === "education"){
             console.log("education is toggled");
-            const currentEducation = openSections["education"];
-            setOpenSections({...openSections, education: !currentEducation});
+            const educationSectionOpen = openSections["education"][0];
+            setOpenSections({...openSections, education: !educationSectionOpen});
         }else if (section === "experience"){
             console.log("experience is toggled");
-            const currentExperience = openSections["experience"];
-            setOpenSections({...openSections, experience: !currentExperience});
+            const experienceSectionOpen = openSections["experience"];
+            setOpenSections({...openSections, experience: !experienceSectionOpen});
         }else{
             console.log("Nothing is toggled");
         }
@@ -144,7 +151,6 @@ function App(){
                 number = {sections.personalInfo.number}
                 handleChange = {handleSectionChange}
                 sectionClick={collapseToggle}
-                innerSectionClick = {inner}
                 isOpen = {openSections["general"]}
             />
             <EducationForm 

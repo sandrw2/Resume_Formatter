@@ -43,6 +43,7 @@
     margin: 10px;
 }
 .input-section {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -191,3 +192,14 @@ input:focus, textarea:focus {
     }
 
 }
+
+.delete-button{
+    position: absolute;
+    border-radius:50%;
+    width:20px;
+    height: 20px;
+    top: 0px;
+    right: 0p;
+
+}
+
