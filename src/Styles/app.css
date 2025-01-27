@@ -199,7 +199,23 @@ input:focus, textarea:focus {
     width:20px;
     height: 20px;
     top: 0px;
-    right: 0p;
+    right: 0px;
 
 }
 
+.detail-section {
+    display: inline-grid;  
+    grid-template-columns: auto 20px; 
+    gap: 8px;  
+    align-items: center;  
+}
+
+.detail-section img {
+    max-width: 100%;  
+    height: auto;    
+}
+
+.detail-section input {
+    grid-column: 1;    
+    width: 100%;      
+}

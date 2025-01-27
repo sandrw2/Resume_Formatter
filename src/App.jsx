@@ -169,6 +169,7 @@ function App(){
                 sectionClick={collapseToggle}
                 isOpen = {openSections["experience"]}
                 addExp = {handleAddSection}
+                deleteExp={handleDeleteSection}
             />
             
         </div>
