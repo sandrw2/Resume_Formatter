@@ -2,8 +2,9 @@ import '../../Styles/app.css'
 import ExperienceIcon from '../../assets/ExperienceIcon.jpg'
 import DeleteIcon from '../../assets/RedXIcon.png'
 import minusIcon from '../../assets/MinusIcon.png'
-function ExperienceForm({experiences, handleChange, addDetail, sectionClick, isOpen, addExp, deleteExp}){
-    
+import EditButton from '../Additional/editButton'
+
+function ExperienceForm({experiences, handleChange, addDetail, sectionClick, isOpen, openSubSect, addExp, deleteExp}){
     return(
         <div className='section-background' onClick={()=>sectionClick("experience")}>
             <div className='header'>
@@ -15,7 +16,8 @@ function ExperienceForm({experiences, handleChange, addDetail, sectionClick, isO
             
             {isOpen && experiences.map((exp) => (
                 // Key always goes on the top level element of the list item
-                <div key = {exp.id} className = "input-section">
+                exp.id === openSubSect ? 
+                <div key = {exp.id} className = "input-section" onClick={(e)=>{e.stopPropagation(); sectionClick("experience", exp.id)}}>
                     <img
                         src = {DeleteIcon}
                         className = "delete-button" 
@@ -83,6 +85,12 @@ function ExperienceForm({experiences, handleChange, addDetail, sectionClick, isO
                     ))}
                     <button className = "form-button" onClick={(e) => {e.stopPropagation(); addDetail(exp.id)}}>Add Detail</button>
                 </div>
+            : <div key = {exp.id} className='closed-subsection' onClick={(e)=>{e.stopPropagation(); sectionClick("experience", exp.id)}}> 
+                <div className='edit-button-container'>
+                    <EditButton></EditButton>
+                </div>
+                Experience
+            </div>   
             ))}
             {isOpen &&  (<button className = "form-button" onClick={(e)=> {e.stopPropagation(); addExp("exp")}}>Add Experience</button>)}
         </div>

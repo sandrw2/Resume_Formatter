@@ -25,9 +25,14 @@ function App(){
 
     
 
-    const [openSections, setOpenSections] = useState(
-        {"general":true, "education":{sectionOpen: true, subsectionId: null}, "experience": {sectionOpen: true, subsectionId: null}});
+
     const [sections, setSections] = useState(exampleData);
+    const [openSections, setOpenSections] = useState({
+        general:true, 
+        education:{sectionOpen: true, subsectionId: exampleData.educations[0].id}, 
+        experience: {sectionOpen: true, subsectionId: exampleData.experiences[0].id}
+    });
+
 
     function handleSectionChange(e, section, id = null, detId = null){
         const{name,value} = e.target;
@@ -87,20 +92,32 @@ function App(){
 
     }
 
-    function collapseToggle(section){
+    function collapseToggle(section, sectionId = null){
         if(section === "general"){
             console.log("general is toggled");
             const generalSectionOpen = openSections.general;
             setOpenSections({...openSections, general: !generalSectionOpen});
 
         }else if(section === "education"){
-            console.log("education is toggled");
-            const educationSectionOpen = openSections["education"][0];
-            setOpenSections({...openSections, education: !educationSectionOpen});
+            if (sectionId !== null){
+                console.log("education subsection is toggled");
+                setOpenSections({...openSections, education:{...openSections.education, subsectionId: sectionId}});
+            }else{
+                console.log("education is toggled");
+                const educationSectionOpen = openSections.education.sectionOpen;
+                setOpenSections({...openSections, education: {...openSections.education, sectionOpen: !educationSectionOpen}});
+            }
+            
         }else if (section === "experience"){
-            console.log("experience is toggled");
-            const experienceSectionOpen = openSections["experience"];
-            setOpenSections({...openSections, experience: !experienceSectionOpen});
+            if(sectionId !== null ){
+                console.log("experience subsection is toggled");
+                setOpenSections({...openSections, experience:{...openSections.experience, subsectionId: sectionId}});
+            }else{
+                console.log("experience is toggled");
+                const experienceSectionOpen = openSections.experience.sectionOpen;
+                setOpenSections({...openSections, experience: {...openSections.experience, sectionOpen: !experienceSectionOpen}});
+            }
+            
         }else{
             console.log("Nothing is toggled");
         }
@@ -151,13 +168,14 @@ function App(){
                 number = {sections.personalInfo.number}
                 handleChange = {handleSectionChange}
                 sectionClick={collapseToggle}
-                isOpen = {openSections["general"]}
+                isOpen = {openSections.general}
             />
             <EducationForm 
                 educations = {sections.educations} 
                 handleChange={handleSectionChange}
                 sectionClick={collapseToggle}
-                isOpen={openSections["education"]}
+                isOpen={openSections.education.sectionOpen}
+                openSubSect ={openSections.education.subsectionId}
                 addEdu = {handleAddSection}
                 deleteEdu={handleDeleteSection}
             />
@@ -167,7 +185,8 @@ function App(){
                 handleChange ={handleSectionChange} 
                 addDetail={addDet}
                 sectionClick={collapseToggle}
-                isOpen = {openSections["experience"]}
+                isOpen = {openSections.experience.sectionOpen}
+                openSubSect = {openSections.experience.subsectionId}
                 addExp = {handleAddSection}
                 deleteExp={handleDeleteSection}
             />

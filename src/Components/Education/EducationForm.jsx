@@ -1,7 +1,9 @@
 import '../../Styles/app.css'
 import EducationIcon from '../../assets/EducationIcon.jpg'
 import DeleteIcon from '../../assets/RedXIcon.png'
-function EducationForm({educations, handleChange, sectionClick, isOpen, addEdu, deleteEdu}){
+import EditButton from '../Additional/editButton'
+
+function EducationForm({educations, handleChange, sectionClick, isOpen, openSubSect, addEdu, deleteEdu}){
     return (
         <div className='section-background' onClick={()=>sectionClick("education")}>
             <div className='header'>
@@ -12,7 +14,7 @@ function EducationForm({educations, handleChange, sectionClick, isOpen, addEdu, 
             </div>
             
             {isOpen && educations.map((edu)=>(
-                <div key={edu.id} className = "input-section">
+                edu.id === openSubSect ? <div key={edu.id} className = "input-section" onClick={(e)=>{e.stopPropagation(); sectionClick("education", edu.id)}}>
                     <img
                         src = {DeleteIcon}
                         className = "delete-button" 
@@ -55,6 +57,12 @@ function EducationForm({educations, handleChange, sectionClick, isOpen, addEdu, 
                         onClick={(e)=> e.stopPropagation()}
                     />
                 </div>
+                : <div key = {edu.id} className='closed-subsection' onClick={(e)=>{e.stopPropagation(); sectionClick("education", edu.id)}}> 
+                    <div className='edit-button-container'>
+                        <EditButton></EditButton>
+                    </div>
+                    Education
+                </div>   
             ))}
 
             {isOpen && (
